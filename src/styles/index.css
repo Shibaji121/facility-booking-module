@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  background-color: rgb(241, 212, 175);
+}
+
+.header {
+  position: fixed;
+  width: -webkit-fill-available;
+  margin: 0;
+  height: max-content;
+  text-align: center;
+  line-height: 4rem;
+  vertical-align: middle;
+  background-color: crimson;
+  color: white;
+  font-family: cursive;
+}
+
+.facility-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: auto;
+  height: 100vh;
+}
+
+.facility-name {
+  width: 20rem;
+  height: 10rem;
+  align-items: center;
+  font-size: xx-large;
+  border: 1px solid black;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+}
