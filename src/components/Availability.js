@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import facilitiesAvailable from "../config/AvailableFacility";
 
 function Availability() {
@@ -74,6 +74,11 @@ function Availability() {
 
   return (
     <div>
+      <Link to={"/"}>
+        <h3 style={{ margin: 0, border: "1px solid black", width: "10vw" }}>
+          BACK TO Home Page
+        </h3>{" "}
+      </Link>
       <h1 className="txt-center">Selected Facility is: {facilityName}</h1>
       <div>
         <h1 className="txt-center">Available Slots and Prices are : </h1>
