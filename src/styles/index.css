@@ -8,6 +8,10 @@ a {
   color: black;
 }
 
+.txt-center {
+  text-align: center;
+}
+
 .header {
   width: -webkit-fill-available;
   margin: 0;
@@ -26,7 +30,7 @@ a {
   align-items: center;
   flex-wrap: wrap;
   margin: auto;
-  height: 90vh;
+  height: 70vh;
 }
 
 .facility-name {
