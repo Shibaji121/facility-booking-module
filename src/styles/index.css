@@ -3,8 +3,12 @@ body {
   background-color: rgb(241, 212, 175);
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .header {
-  position: fixed;
   width: -webkit-fill-available;
   margin: 0;
   height: max-content;
@@ -22,7 +26,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
   margin: auto;
-  height: 100vh;
+  height: 90vh;
 }
 
 .facility-name {
