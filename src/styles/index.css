@@ -43,3 +43,50 @@ a {
   display: flex;
   justify-content: center;
 }
+
+.slot-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.slots {
+  border: 1px solid black;
+  border-radius: 20px;
+  font-size: larger;
+  padding: 10px;
+  background-color: rgb(5, 229, 245);
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  width: 36vw;
+  height: 40vh;
+  margin: 2rem auto;
+  justify-content: space-around;
+}
+
+.details label {
+  font-family: cursive;
+  font-size: x-large;
+}
+
+.details input {
+  border-radius: 20px;
+  padding-left: 1rem;
+  height: 2rem;
+  font-size: larger;
+}
+
+.details button {
+  margin-top: 13px;
+  padding: 8px;
+  border-radius: 20px;
+  font-size: 2rem;
+  max-height: -webkit-fill-available;
+  cursor: pointer;
+  color: white;
+  background: darkgreen;
+}

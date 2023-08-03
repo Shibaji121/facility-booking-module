@@ -12,16 +12,26 @@ function Availability() {
     <div>
       <h1 className="txt-center">Selected Facility is: {facilityName}</h1>
       <div>
-        <h1>Select Any of the Available Slot</h1>
-        {console.log(slotAvailibilty[0].slots)}
-        {slotAvailibilty[0].slots.map((slot, index) => {
-          return (
-            <div key={index}>
-              <div>Timing : {slot?.time}</div>
-              <div>Price Per Hour : {slot?.price}</div>
-            </div>
-          );
-        })}
+        <h1 className="txt-center">Available Slots and Prices are : </h1>
+        <div className="slot-container">
+          {slotAvailibilty[0]?.slots.map((slot, index) => {
+            return (
+              <div className="slots" key={index}>
+                <div className="slot-timing">Timing : {slot?.time}</div>
+                <div className="slot-price">
+                  Price Per Hour : {slot?.price}rs
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <div className="details">
+          <label>Enter The Start Time in 24hr format</label>
+          <input type="number" />
+          <label>Enter The Exit Time in 24hr format</label>
+          <input type="number" />
+          <button type="submit">Confirm Booking</button>
+        </div>
       </div>
     </div>
   );
