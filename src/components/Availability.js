@@ -5,11 +5,49 @@ import facilitiesAvailable from "../config/AvailableFacility";
 function Availability() {
   const [strTime, setStrTime] = useState(0);
   const [extTime, setExtTime] = useState(24);
+  const [bookings, setBookings] = useState([]);
 
   const { facilityName } = useParams();
   const slotAvailibilty = facilitiesAvailable.filter((facility) => {
     return facility.name === facilityName;
   });
+
+  const isAlreadyBooked = (startTime, endTime) => {
+    let flag = false;
+    bookings?.forEach((item) => {
+      const timeArray = item.time.split(" - ");
+      const slotStartTime = parseInt(timeArray[0].split(":")[0]);
+      const slotEndTime = parseInt(timeArray[1].split(":")[0]);
+
+      if (startTime <= slotEndTime && endTime >= slotStartTime) {
+        flag = true;
+        return true;
+      }
+    });
+    return flag;
+  };
+
+  const calculatePrice = (startTime, endTime) => {
+    let totalPrice = 0;
+    slotAvailibilty[0]?.slots.forEach((item) => {
+      const timeArray = item.time.split(" - ");
+      const slotStartTime = parseInt(timeArray[0].split(":")[0]);
+      const slotEndTime = parseInt(timeArray[1].split(":")[0]);
+
+      if (startTime <= slotEndTime && endTime >= slotStartTime) {
+        const overlapStart = Math.max(startTime, slotStartTime);
+        const overlapEnd = Math.min(endTime, slotEndTime);
+        const overlapDuration = overlapEnd - overlapStart;
+
+        const slotPricePerHour = item.price;
+        const overlapPrice = overlapDuration * slotPricePerHour;
+
+        totalPrice += overlapPrice;
+      }
+    });
+
+    return totalPrice;
+  };
 
   const handleBooking = () => {
     if (strTime < 0 || extTime < 0) {
@@ -24,8 +62,14 @@ function Availability() {
     } else if (strTime >= extTime) {
       alert("Start Time Should be less than Exit Time");
       return;
+    } else if (isAlreadyBooked(strTime, extTime)) {
+      alert("Booking Failed, Already Booked");
+      return;
     }
-    console.log("Validated");
+    const price = calculatePrice(strTime, extTime);
+    const bookingSlot = { time: `${strTime}:00 - ${extTime}:00` };
+    setBookings([...bookings, bookingSlot]);
+    alert(`Booked, Rs  ${price}`);
   };
 
   return (
